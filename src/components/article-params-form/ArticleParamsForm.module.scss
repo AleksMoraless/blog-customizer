@@ -1,15 +1,16 @@
 .container {
 	position: fixed;
 	left: 0;
-	width: 616px;
+	min-width: 616px;
 	height: 100%;
-	overflow: scroll;
+	overflow: hidden;
 	transform: translate(-616px);
 	transition: transform 0.5s ease;
 }
 
 .container_open {
 	transform: translate(0);
+	overflow: scroll;
 }
 
 .form {
@@ -19,10 +20,25 @@
 	box-sizing: border-box;
 	width: 616px;
 	height: auto;
+	gap: 50px;
 	min-height: 100%;
 	padding: 50px 31px;
 	background-color: #ffffff;
 	border-right: 1px solid #000000;
+	overflow-x: hidden;
+}
+
+.fieldSet {
+	border-bottom: 1px solid #D7D7D7;
+	padding-block-end: 50px;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+}
+
+.contentFieldSet {
+	border-bottom: none;
+	padding-block-end: 0;
 }
 
 .bottomContainer {

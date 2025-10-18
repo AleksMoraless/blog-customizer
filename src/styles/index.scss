@@ -140,3 +140,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+html,
+body {
+	scrollbar-gutter: stable;
+}
