@@ -68,7 +68,9 @@ export const ArticleParamsForm = ({ onApply }: ArticleParamsFormProps) => {
 	return (
 		<>
 			<ArrowButton isOpen={isMenuOpen} onClick={() => { setMenuOpened(isOpen => !isOpen) }} />
-			<aside className={isMenuOpen ?  clsx(styles.container, styles.container_open) : styles.container}>
+			<aside className={clsx(styles.container, {
+				[styles.container_open]: isMenuOpen,
+				})}>
 				<form className={styles.form} onSubmit={(e) => e.preventDefault()}>
 					<Text
 						children={'Задайте параметры'}
