@@ -8,6 +8,7 @@ import { useState } from 'react';
 
 import styles from './ArticleParamsForm.module.scss';
 import { ArticleStateType, backgroundColors, contentWidthArr, defaultArticleState, fontColors, fontFamilyOptions, fontSizeOptions, OptionType } from 'src/constants/articleProps';
+import clsx from 'clsx';
 
 interface ArticleParamsFormProps {
 	onApply?: (styles: ArticleStateType) => void;
@@ -15,9 +16,9 @@ interface ArticleParamsFormProps {
 
 
 export const ArticleParamsForm = ({ onApply }: ArticleParamsFormProps) => {
-	const [isOpen, setOpened] = useState(true);
+	const [isMenuOpen, setMenuOpened] = useState(false);
 	const [articleState, setArticleState] = useState<ArticleStateType>(defaultArticleState);
-	isOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = '';
+	isMenuOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = '';
 
 	const handleFontFamilyChange = (selectedOption: OptionType) => {
 		setArticleState(prev => ({
@@ -66,8 +67,8 @@ export const ArticleParamsForm = ({ onApply }: ArticleParamsFormProps) => {
 
 	return (
 		<>
-			<ArrowButton isOpen={isOpen} onClick={() => { setOpened(isOpen => !isOpen) }} />
-			<aside className={isOpen ? `${styles.container} ${styles.container_open}` : styles.container}>
+			<ArrowButton isOpen={isMenuOpen} onClick={() => { setMenuOpened(isOpen => !isOpen) }} />
+			<aside className={isMenuOpen ?  clsx(styles.container, styles.container_open) : styles.container}>
 				<form className={styles.form} onSubmit={(e) => e.preventDefault()}>
 					<Text
 						children={'Задайте параметры'}
@@ -99,7 +100,7 @@ export const ArticleParamsForm = ({ onApply }: ArticleParamsFormProps) => {
 							onClose={() => { }}
 						></Select>
 					</fieldset>
-					<fieldset className={`${styles.fieldSet} ${styles.contentFieldSet}`}>
+					<fieldset className={clsx(styles.fieldSet, styles.contentFieldSet)}>
 						<Select
 							selected={articleState.backgroundColor}
 							options={backgroundColors}
