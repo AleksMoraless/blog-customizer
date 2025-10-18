@@ -61,7 +61,10 @@ export const Select = (props: SelectProps) => {
 				ref={rootRef}
 				data-is-active={isOpen}
 				data-testid='selectWrapper'>
-				<img src={arrowDown} alt='иконка стрелочки' className={styles.arrow} />
+
+					<img onClick={() => {setIsOpen(isOpen => !isOpen)}} src={arrowDown} alt='иконка стрелочки' className={styles.arrow} />
+
+
 				<div
 					className={clsx(
 						styles.placeholder,
